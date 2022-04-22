@@ -238,6 +238,14 @@ func (e *Environment) Create() error {
 		return errors.Wrap(err, "environment/docker: failed to create container")
 	}
 
+	if err := e.client.NetworkConnect(context.Background(), "service-private", e.Id, nil); err != nil {
+		return errors.Wrap(err, "environment/docker: failed to join network: service-private")
+	}
+
+	if err := e.client.NetworkConnect(context.Background(), "service-internet", e.Id, nil); err != nil {
+		return errors.Wrap(err, "environment/docker: failed to join network: service-internet")
+	}
+
 	return nil
 }
 
