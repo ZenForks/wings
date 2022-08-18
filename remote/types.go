@@ -6,7 +6,6 @@ import (
 	"github.com/goccy/go-json"
 	"regexp"
 	"strings"
-
 	"github.com/pterodactyl/wings/parser"
 )
 
